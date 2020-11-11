@@ -24,12 +24,12 @@ Install [Postgres & pgAdmin](https://codingpub.dev/ubuntu-install-postgresql-and
   
 - Find books of author "Fitzgerald"
 
-    ```SELECT * FROM public.books WHERE author LIKE '%Fitzgerald%';```
+    ```SELECT * FROM books WHERE author LIKE '%Fitzgerald%';```
 
         
 - Find authors without books
 
-    ```SELECT name FROM public.authors WHERE name NOT IN (SELECT author FROM books);```
+    ```SELECT name FROM authors WHERE name NOT IN (SELECT author FROM books);```
 
 - Count books per country
 
