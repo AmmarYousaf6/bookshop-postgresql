@@ -13,7 +13,12 @@ Install [Postgres & pgAdmin](https://codingpub.dev/ubuntu-install-postgresql-and
 - Select Restore.
 - Set Format to "Custom or tar"
 - Select filename from the path where you downloaded the file "booklist"
-- Click on the "Restore" button.
+- Click on the "Restore" button
+
+OR
+
+ Click on the image below for a step to step guide for Importing file in pgAdmin4
+ [![Video Import](https://drive.google.com/uc?export=view&id=1S1x1g74XZ6527r75PMQUa01Z5JNifNra)](https://youtu.be/l5VtQpDl_RA "Video Import")
 
 ## Queries
 
