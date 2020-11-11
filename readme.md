@@ -58,7 +58,7 @@ OR
  
    ``` Create index on the column ```
    
-   ``` Add Pagination ```
+   ``` Use Pagination : Use Offset and Limit to retrieve portion of records  ```
     
 ## Tools and Technologies
     
