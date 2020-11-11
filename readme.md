@@ -1,50 +1,62 @@
-## Database schema creation
+# Book Shop Schema in Postgresql
 
-Create a database schema to hold the following information:
+Create a database schema to hold the information of Authors and Books
 
-**Authors:**
-```
-"name", "country"
-"J. D. Salinger", "US"
-"F. Scott. Fitzgerald", "US"
-"Jane Austen", "UK"
-"Leo Tolstoy", "RU"
-"Sun Tzu", "CN"
-"Johann Wolfgang von Goethe", "DE"
-"Janis Eglitis", "LV"
-```
+## Installation
+Install [Postgres & pgAdmin](https://codingpub.dev/ubuntu-install-postgresql-and-pgadmin/) by following the instructions provided.
 
-**Books:**
-```
-"name", "author", "pages"
-"The Catcher in the Rye", "J. D. Salinger", 300
-"Nine Stories", "J. D. Salinger", 200
-"Franny and Zooey", "J. D. Salinger", 150
-"The Great Gatsby", "F. Scott. Fitzgerald", 400
-"Tender is the Night", "F. Scott. Fitzgerald", 500
-"Pride and Prejudice", "Jane Austen", 700
-"The Art of War", "Sun Tzu", 128
-"Faust I", "Johann Wolfgang von Goethe", 300
-"Faust II", "Johann Wolfgang von Goethe", 300
-```
+## Usage
 
-Provide the schema and content for Postgres 9.6 or higher, including instructions on how to import it into a local database.
+- Download the file "booklist".
+- Open pgAdmin4 by providing the correct credentials.
+- Right click on the database where you want to import the Schema and it's contents.
+- Select Restore.
+- Set Format to "Custom or tar"
+- Select filename from the path where you downloaded the file "booklist"
+- Click on the "Restore" button.
 
-
-## Produce queries to answer the following questions
+## Queries
 
 - Find author by name "Leo"
 
+    ```SELECT * FROM authors WHERE name LIKE 'Leo%';```
+
+  
 - Find books of author "Fitzgerald"
 
+    ```SELECT * FROM public.books WHERE author LIKE '%Fitzgerald%';```
+
+        
 - Find authors without books
+
+    ```SELECT name FROM public.authors WHERE name NOT IN (SELECT author FROM books);```
 
 - Count books per country
 
+    ```SELECT country, Count (*) AS Number FROM books INNER JOIN authors ON books.author = authors.name GROUP BY country;```
+
 - Count average book length (in pages) per author
 
+    ```SELECT author,AVG(pages)::numeric(10,2) FROM books GROUP BY author;```
 
-## Analyze and explain the time complexity of the queries
 
-Include potential suggestions on how to improve it.
-Consider that there might be millions of authors with millions of books.
+## Questions
+- Include potential suggestions on how to improve it.
+    
+    Following are the ways to improve the provided structure of database
+    
+    ``` Should have the primary key attribute for both tables ```
+    
+    ``` Should have an "author_FK" foreign key attribute in the books table rather then the name```
+ 
+ - Consider that there might be millions of authors with millions of books.
+ 
+   ``` Create index on the column ```
+   
+   ``` Add Pagination ```
+    
+## Tools and Technologies
+    
+    postgres 12.4
+
+    pdAdmin4
